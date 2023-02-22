@@ -1,0 +1,26 @@
+{
+  "name": "18-mongodb-mongoose-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcg0/18-mongodb-mongoose-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcg0/18-mongodb-mongoose-backend/issues"
+  },
+  "homepage": "https://github.com/jcg0/18-mongodb-mongoose-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^6.9.2",
+    "nodemon": "^2.0.20"
+  }
+}
