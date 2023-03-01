@@ -1,14 +1,18 @@
+const { populate } = require('../models/Thought');
 const User = require('../models/User');
 
 module.exports = {
   getUsers(req, res) {
     User.find({})
+      .populate('thoughts')
+      .populate('friends')
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err))
   },
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId})
-      .select('-__v')
+      .populate('thoughts')
+      .populate('friends')
       .then((user) => 
       !user
         ? res.status(404).json({ message: 'user not found.'})
@@ -41,9 +45,11 @@ module.exports = {
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { friends: req.params.friendId } },
+      { $addToSet: { friends: req.params.friendId, } },
       { new: true },
       )
+      // .select('-__v')
+      // .populate({ username: req.body.username })
       .then((friend) => !friend ? res.status(400).json({ message: 'could not add friend'}) : res.json(friend))
   },
   deleteFriend(req, res) {
